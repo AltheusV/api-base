@@ -10,7 +10,5 @@ namespace api_base.Data
             // dotnet ef migrations add .. 
             // dotnet ef database update
         }
-
-        public DbSet<Model>? Models { get; set; }
     }
 }
