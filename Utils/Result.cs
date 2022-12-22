@@ -13,6 +13,7 @@ namespace api_base.Utils
             return response.Code switch
             {
                 StatusCode.Ok => new OkObjectResult(response),
+                StatusCode.Created => new CreatedResult("", response),
                 StatusCode.NoContent => new NoContentResult(),
                 StatusCode.BadRequest => new BadRequestObjectResult(response),
                 StatusCode.Unauthorized => new UnauthorizedObjectResult(response),
