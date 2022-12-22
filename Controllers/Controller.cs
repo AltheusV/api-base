@@ -34,7 +34,7 @@ namespace api_base.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
-        public virtual async Task<ActionResult<R>> Get(int id)
+        public virtual async Task<ActionResult<R>> Get(uint id)
         {
             var response = await readHandler.HandleAsync(id);
             return Result<E, D>.ToActionResult<Response<E, D>>(response);
@@ -68,7 +68,7 @@ namespace api_base.Controllers
 
         [HttpDelete("{id}")]
         [ProducesResponseType(204)]
-        public virtual async Task<ActionResult<R>> Delete(int id)
+        public virtual async Task<ActionResult<R>> Delete(uint id)
         {
             var response = await deleteHandler.HandleAsync(id);
             return Result<E, D>.ToActionResult<Response<E, D>>(response);

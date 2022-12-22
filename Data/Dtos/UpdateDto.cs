@@ -6,6 +6,6 @@ namespace api_base.Data.Dtos
     public abstract class UpdateDto<T> where T : Entity
     {
         [Required]
-        public int Id { get; init; }
+        public uint Id { get; init; }
     }
 }

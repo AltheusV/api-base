@@ -30,7 +30,7 @@ namespace api_base.Services
             repository.Delete(entities);
         }
 
-        public virtual async Task<D?> ReadAsync(int id)
+        public virtual async Task<D?> ReadAsync(uint id)
         {
             var entity = await repository.GetAsync(id);
             return Mapper.Map(entity).ToANew<D>();
@@ -71,7 +71,7 @@ namespace api_base.Services
             await repository.SaveChangesAsync();
         }
 
-        public virtual async Task<bool> ExistsAsync(int id)
+        public virtual async Task<bool> ExistsAsync(uint id)
         {
             return await repository.ExistsAsync(id);
         }
