@@ -24,12 +24,6 @@ namespace api_base.Controllers.Keys
         }
 
         [NonAction]
-        public override Task<ActionResult<KeyResponse>> Update([FromBody] KeyUpdateDto dto)
-        {
-            throw new NotImplementedException();
-        }
-
-        [NonAction]
         public override Task<ActionResult<KeyResponse>> Delete(int id)
         {
             throw new NotImplementedException();
