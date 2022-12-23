@@ -1,6 +1,7 @@
 using AgileObjects.AgileMapper;
 using api_base.Data.Dtos;
 using api_base.Models;
+using api_base.Models.Rooms;
 using api_base.Repositories;
 
 namespace api_base.Services
@@ -30,7 +31,7 @@ namespace api_base.Services
             repository.Delete(entities);
         }
 
-        public virtual async Task<D?> ReadAsync(uint id)
+        public virtual async Task<D?> ReadAsync(int id)
         {
             var entity = await repository.GetAsync(id);
             return Mapper.Map(entity).ToANew<D>();
@@ -71,7 +72,7 @@ namespace api_base.Services
             await repository.SaveChangesAsync();
         }
 
-        public virtual async Task<bool> ExistsAsync(uint id)
+        public virtual async Task<bool> ExistsAsync(int id)
         {
             return await repository.ExistsAsync(id);
         }

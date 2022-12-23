@@ -9,7 +9,7 @@ namespace api_base.Services
     where I : InsertDto<E>
     where U : UpdateDto<E>
     {
-        Task<D?> ReadAsync(uint id);
+        Task<D?> ReadAsync(int id);
         Task<D[]> ReadAsync();
         Task CreateAsync(I insertDto);
         Task CreateAsync(IEnumerable<I> insertDtos);
@@ -18,6 +18,6 @@ namespace api_base.Services
         void Delete(D dto);
         void Delete(IEnumerable<D> dtos);
         Task SaveChangesAsync();
-        Task<bool> ExistsAsync(uint id);
+        Task<bool> ExistsAsync(int id);
     }
 }

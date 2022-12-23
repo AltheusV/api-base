@@ -4,7 +4,7 @@ namespace api_base.Repositories
 {
     public interface IRepository<T> where T : Entity
     {
-        Task<T?> GetAsync(uint id);
+        Task<T?> GetAsync(int id);
         Task<T[]> GetAsync();
         Task InsertAsync(T entity);
         Task InsertAsync(IEnumerable<T> entities);
@@ -13,6 +13,6 @@ namespace api_base.Repositories
         void Delete(T entity);
         void Delete(IEnumerable<T> entities);
         Task SaveChangesAsync();
-        Task<bool> ExistsAsync(uint id);
+        Task<bool> ExistsAsync(int id);
     }
 }

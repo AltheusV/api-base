@@ -12,10 +12,10 @@ namespace api_base.Controllers
     where U : UpdateDto<E>
     where R : Response<E, D>
     {
-        public Task<ActionResult<R>> Get(uint id);
+        public Task<ActionResult<R>> Get(int id);
         public Task<ActionResult<R>> Get();
         public Task<ActionResult<R>> Insert([FromBody] I dto);
         public Task<ActionResult<R>> Update([FromBody] U dto);
-        public Task<ActionResult<R>> Delete(uint id);
+        public Task<ActionResult<R>> Delete(int id);
     }
 }

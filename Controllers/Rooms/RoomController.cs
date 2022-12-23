@@ -2,6 +2,7 @@ using api_base.Data.Dtos.Rooms;
 using api_base.Handlers.Rooms;
 using api_base.Models.Rooms;
 using api_base.Utils.Rooms;
+using Microsoft.AspNetCore.Mvc;
 
 namespace api_base.Controllers.Rooms
 {
@@ -13,6 +14,12 @@ namespace api_base.Controllers.Rooms
             , RoomDeleteHandler deleteHandler
             , RoomUpdateHandler updateHandler) : base(readHandler, createHandler, deleteHandler, updateHandler)
         {
+        }
+
+        [NonAction]
+        public override Task<ActionResult<RoomResponse>> Delete(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -28,7 +28,7 @@ namespace api_base.Models.Rooms
         public ushort? Capacity { get; set; }
 
         [Required]
-        public uint? KeyId { get; set; }
+        public int? KeyId { get; set; }
 
         [ForeignKey("KeyId")]
         public Key? Key { get; set; }

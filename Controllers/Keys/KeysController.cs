@@ -30,7 +30,7 @@ namespace api_base.Controllers.Keys
         }
 
         [NonAction]
-        public override Task<ActionResult<KeyResponse>> Delete(uint id)
+        public override Task<ActionResult<KeyResponse>> Delete(int id)
         {
             throw new NotImplementedException();
         }

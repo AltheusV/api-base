@@ -1,6 +1,5 @@
-using System.ComponentModel.DataAnnotations.Schema;
+using api_base.Data.Dtos.Keys;
 using api_base.Models.Rooms;
-using api_base.Models.Tags;
 
 namespace api_base.Data.Dtos.Rooms
 {
@@ -20,10 +19,9 @@ namespace api_base.Data.Dtos.Rooms
 
         public ushort? Capacity { get; set; }
 
-        public uint? KeyId { get; set; }
+        public int? KeyId { get; set; }
 
-        [ForeignKey("KeyId")]
-        public Key? Key { get; set; }
+        public KeyDto? Key { get; set; }
 
         public bool Available { get; set; }
 
