@@ -26,7 +26,7 @@ namespace api_base.Handlers
             if (!exists)
                 return Response<E, D>.NotFound();
 
-            service.Update(dto);
+            await service.Update(dto);
             await service.SaveChangesAsync();
 
             return Response<E, D>.Success(ResponseMessage.Updated);

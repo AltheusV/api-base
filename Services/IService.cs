@@ -13,7 +13,7 @@ namespace api_base.Services
         Task<D[]> ReadAsync();
         Task CreateAsync(I insertDto);
         Task CreateAsync(IEnumerable<I> insertDtos);
-        void Update(U updateDto);
+        Task Update(U updateDto);
         void Update(IEnumerable<U> updateDtos);
         void Delete(D dto);
         void Delete(IEnumerable<D> dtos);

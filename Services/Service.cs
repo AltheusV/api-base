@@ -1,7 +1,6 @@
 using AgileObjects.AgileMapper;
 using api_base.Data.Dtos;
 using api_base.Models;
-using api_base.Models.Rooms;
 using api_base.Repositories;
 
 namespace api_base.Services
@@ -55,9 +54,12 @@ namespace api_base.Services
             await repository.InsertAsync(entities);
         }
 
-        public virtual void Update(U updateDto)
+        public virtual async Task Update(U updateDto)
         {
-            var entity = Mapper.Map(updateDto).ToANew<E>();
+            var dto = await ReadAsync(updateDto.Id);
+            Mapper.Map(updateDto).Over(dto);
+
+            var entity = Mapper.Map(dto).ToANew<E>();
             repository.Update(entity);
         }
 
