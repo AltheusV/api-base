@@ -25,17 +25,27 @@ namespace api_base.Repositories
 
         public virtual async Task<bool> ExistsAsync(int id)
         {
-            return await db.Set<T>().AsNoTracking().AnyAsync(t => t.Id == id);
+            return await db.Set<T>().AnyAsync(t => t.Id == id);
         }
 
-        public virtual async Task<T?> GetAsync(int id)
+        public virtual async Task<T?> GetAsync(int id, bool track = false)
         {
-            return await db.Set<T>().AsNoTracking().Where(t => t.Id == id).SingleOrDefaultAsync();
+            var query = db.Set<T>().AsQueryable();
+            
+            if (!track)
+                query = query.AsNoTracking();
+
+            return await query.Where(t => t.Id == id).SingleOrDefaultAsync();
         }
 
-        public virtual async Task<T[]> GetAsync()
+        public virtual async Task<T[]> GetAsync(bool track = false)
         {
-            return await db.Set<T>().AsNoTracking().ToArrayAsync();
+            var query = db.Set<T>().AsQueryable();
+
+            if (!track)
+                query = query.AsNoTracking();
+
+            return await query.ToArrayAsync();
         }
 
         public virtual async Task InsertAsync(T entity)
