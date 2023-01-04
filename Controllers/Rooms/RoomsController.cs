@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace api_base.Controllers.Rooms
 {
-    public class RoomController : Controller<Room, RoomDto, RoomInsertDto, RoomUpdateDto, RoomResponse>
+    public class RoomsController : Controller<Room, RoomDto, RoomInsertDto, RoomUpdateDto, RoomResponse>
     {
-        public RoomController(
+        public RoomsController(
             RoomReadHandler readHandler
             , RoomCreateHandler createHandler
             , RoomDeleteHandler deleteHandler

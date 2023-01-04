@@ -51,6 +51,7 @@ namespace api_base.Controllers
 
         [HttpPost]
         [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
         public virtual async Task<ActionResult<R>> Insert([FromBody] I dto)
         {
             var response = await createHandler.HandleAsync(dto);
