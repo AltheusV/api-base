@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using AgileObjects.AgileMapper;
 using api_base.Data.Dtos;
 using api_base.Models;
@@ -30,15 +31,15 @@ namespace api_base.Services
             repository.Delete(entities);
         }
 
-        public virtual async Task<D?> ReadAsync(int id)
+        public virtual async Task<D?> ReadAsync(int id, bool track = false, params Expression<Func<E, object>>[] customIncludes)
         {
-            var entity = await repository.GetAsync(id);
+            var entity = await repository.GetAsync(id, track, customIncludes);
             return Mapper.Map(entity).ToANew<D>();
         }
 
-        public virtual async Task<D[]> ReadAsync()
+        public virtual async Task<D[]> ReadAsync(bool track = false, params Expression<Func<E, object>>[] customIncludes)
         {
-            var entities = await repository.GetAsync();
+            var entities = await repository.GetAsync(track, customIncludes);
             return Mapper.Map(entities).ToANew<D[]>();
         }
 
@@ -54,13 +55,14 @@ namespace api_base.Services
             await repository.InsertAsync(entities);
         }
 
-        public virtual async Task Update(U updateDto)
+        public virtual async Task UpdateAsync(U updateDto)
         {
-            var dto = await ReadAsync(updateDto.Id);
-            Mapper.Map(updateDto).Over(dto);
+            var record = await repository.GetAsync(updateDto.Id);
+            if (record == default)
+                return;
 
-            var entity = Mapper.Map(dto).ToANew<E>();
-            repository.Update(entity);
+            Mapper.Map(updateDto).Over(record);
+            repository.Update(record);
         }
 
         public virtual void Update(IEnumerable<U> updateDtos)

@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using api_base.Data.Dtos;
 using api_base.Models;
 
@@ -9,11 +10,11 @@ namespace api_base.Services
     where I : InsertDto<E>
     where U : UpdateDto<E>
     {
-        Task<D?> ReadAsync(int id);
-        Task<D[]> ReadAsync();
+        Task<D?> ReadAsync(int id, bool track = false, params Expression<Func<E, object>>[] customIncludes);
+        Task<D[]> ReadAsync(bool track = false, params Expression<Func<E, object>>[] customIncludes);
         Task CreateAsync(I insertDto);
         Task CreateAsync(IEnumerable<I> insertDtos);
-        Task Update(U updateDto);
+        Task UpdateAsync(U updateDto);
         void Update(IEnumerable<U> updateDtos);
         void Delete(D dto);
         void Delete(IEnumerable<D> dtos);
