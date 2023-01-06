@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using api_base.Models.Courses;
+using api_base.Models.Professors;
 
 namespace api_base.Models.Subjects
 {
@@ -18,5 +19,7 @@ namespace api_base.Models.Subjects
         public string? Group { get; set; }
 
         public ICollection<Course> Courses { get; set; } = new List<Course>();
+
+        public ICollection<Professor> Professors { get; set; } = new List<Professor>();
     }
 }

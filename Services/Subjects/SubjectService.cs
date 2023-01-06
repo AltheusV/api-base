@@ -2,6 +2,7 @@ using AgileObjects.AgileMapper;
 using api_base.Data.Dtos.Subjects;
 using api_base.Models.Subjects;
 using api_base.Repositories.Courses;
+using api_base.Repositories.Professors;
 using api_base.Repositories.Subjects;
 
 namespace api_base.Services.Subjects
@@ -10,11 +11,16 @@ namespace api_base.Services.Subjects
     {
         private readonly ISubjectRepository repository;
         private readonly ICourseRepository courseRepository;
+        private readonly IProfessorRepository professorRepository;
 
-        public SubjectService(ISubjectRepository repository, ICourseRepository courseRepository) : base(repository)
+        public SubjectService(
+            ISubjectRepository repository
+            , ICourseRepository courseRepository
+            , IProfessorRepository professorRepository) : base(repository)
         {
             this.repository = repository;
             this.courseRepository = courseRepository;
+            this.professorRepository = professorRepository;
         }
 
         public override async Task CreateAsync(SubjectInsertDto insertDto)
@@ -22,6 +28,7 @@ namespace api_base.Services.Subjects
             var subject = Mapper.Map(insertDto).ToANew<Subject>();
 
             subject.Courses = await courseRepository.GetAsync(insertDto.CoursesIds, true);
+            subject.Professors = await professorRepository.GetAsync(insertDto.ProfessorsIds, true);
 
             await repository.InsertAsync(subject);
         }
@@ -35,6 +42,7 @@ namespace api_base.Services.Subjects
             Mapper.Map(updateDto).Over(subject);
 
             subject.Courses = await courseRepository.GetAsync(updateDto.CoursesIds, true);
+            subject.Professors = await professorRepository.GetAsync(updateDto.ProfessorsIds, true);
 
             repository.Update(subject);
         }

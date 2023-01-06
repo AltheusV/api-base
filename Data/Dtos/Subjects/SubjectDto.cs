@@ -1,4 +1,5 @@
 using api_base.Data.Dtos.Courses;
+using api_base.Data.Dtos.Professors;
 using api_base.Models.Courses;
 using api_base.Models.Subjects;
 
@@ -15,5 +16,7 @@ namespace api_base.Data.Dtos.Subjects
         public string? Group { get; set; }
 
         public ICollection<CourseDto>? Courses { get; set; }
+
+        public ICollection<ProfessorDto>? Professors { get; set; }
     }
 }

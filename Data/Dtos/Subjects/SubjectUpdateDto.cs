@@ -20,5 +20,7 @@ namespace api_base.Data.Dtos.Subjects
 
         [Required]
         public int[] CoursesIds { get; init; } = Array.Empty<int>();
+
+        public int[] ProfessorsIds { get; init; } = Array.Empty<int>();
     }
 }

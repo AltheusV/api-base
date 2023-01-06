@@ -18,7 +18,8 @@ namespace api_base.Data.Dtos.Subjects
         [Required(AllowEmptyStrings = false), MaxLength(2)]
         public string? Group { get; init; }
 
-        [Required]
         public int[] CoursesIds { get; init; } = Array.Empty<int>();
+
+        public int[] ProfessorsIds { get; init; } = Array.Empty<int>();
     }
 }
