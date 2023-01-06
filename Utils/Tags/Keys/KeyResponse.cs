@@ -1,7 +1,7 @@
-using api_base.Data.Dtos.Keys;
-using api_base.Models.Tags;
+using api_base.Data.Dtos.Tags.Keys;
+using api_base.Models.Tags.Keys;
 
-namespace api_base.Utils.Keys
+namespace api_base.Utils.Tags.Keys
 {
     public class KeyResponse : Response<Key, KeyDto>
     {

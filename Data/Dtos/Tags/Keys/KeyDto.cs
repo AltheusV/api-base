@@ -1,6 +1,6 @@
-using api_base.Models.Tags;
+using api_base.Models.Tags.Keys;
 
-namespace api_base.Data.Dtos.Keys
+namespace api_base.Data.Dtos.Tags.Keys
 {
     public class KeyDto : Dto<Key>
     {

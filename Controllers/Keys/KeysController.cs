@@ -1,7 +1,7 @@
-using api_base.Data.Dtos.Keys;
-using api_base.Handlers.Keys;
-using api_base.Models.Tags;
-using api_base.Utils.Keys;
+using api_base.Data.Dtos.Tags.Keys;
+using api_base.Handlers.Tags.Keys;
+using api_base.Models.Tags.Keys;
+using api_base.Utils.Tags.Keys;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api_base.Controllers.Keys
@@ -15,6 +15,18 @@ namespace api_base.Controllers.Keys
             , KeyUpdateHandler updateHandler) : base(readHandler, createHandler, deleteHandler, updateHandler)
         {
 
+        }
+
+        [NonAction]
+        public override Task<ActionResult<KeyResponse>> Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        [NonAction]
+        public override Task<ActionResult<KeyResponse>> Get()
+        {
+            throw new NotImplementedException();
         }
 
         [NonAction]
