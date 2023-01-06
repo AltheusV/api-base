@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using api_base.Data.Dtos.Keys;
+using api_base.Data.Dtos.Tags.Keys;
 using api_base.Models.Rooms;
 
 namespace api_base.Data.Dtos.Rooms

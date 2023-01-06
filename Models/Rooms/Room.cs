@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using api_base.Models.Tags;
+using api_base.Models.Tags.Keys;
 
 namespace api_base.Models.Rooms
 {
